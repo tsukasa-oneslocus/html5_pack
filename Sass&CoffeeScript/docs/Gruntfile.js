@@ -1,11 +1,3 @@
-/*	grunt.js機能テンプレート　ver1.1.0
-	author:tokura-tsukasa@COM
-	
-	機能：CoffeeScript,Sassのコンパイル・css/jsファイルの結合→圧縮,watchによる自動タスク管理,jsHintによる自動デバッグ,自動ブラウザリロード（ブラウザのアドオン・エクステンションの設定必須）
-	
-	不必要な機能はガンガンコメントアウトしてください。
-*/
-
 module.exports = function(grunt) {
 
 	// ここに追加
