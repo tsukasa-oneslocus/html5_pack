@@ -141,7 +141,7 @@ module.exports = function(grunt) {
         regarde: {
 			html: {
 				// HTMLファイルが変更されたら、ブラウザリロード。
-				files: ['*.html','../*.html','../../*.html','../../../*.html','../../../../*.html'],
+				files: ['*.html','*/*.html','*/*/*.html','*/*/*/*.html','*/*/*/*/*.html'],
 				tasks: ['livereload']
 			},
 			css: {
