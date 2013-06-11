@@ -67,15 +67,6 @@ module.exports = function(grunt) {
 		/* jsHintによるjsデバッグ。結果はコンソールに表示
 		------------------------------------------------------------------------*/
 		jshint: {
-			options: {
-				"curly": true,
-				"eqnull": true,
-				"eqeqeq": true,
-				"undef": true,
-				"globals": {
-					"jQuery": true
-				}
-			},
 			// 対象ファイルを指定
 			all: ["common/js/run.js"]
 		},
