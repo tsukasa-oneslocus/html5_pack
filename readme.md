@@ -88,6 +88,24 @@ grunt_files/cmd_bat内のgrunt_start.batを叩いてください。
 ###**⑥Gruntfileの調整**
 
 Gruntfile.jsの調整を行います。
+
+* バーチャルホスト名（xamppのVH名です）  
+* docs  
+* 共通リソースの配置先
+* コンパイル言語ファイルの格納先 
+
+を設定してください。  
+ここで決めた名称がそのままディレクトリのフォルダ名として後々生成されます。
+
+	// パスの設定
+	var pathConfig = {
+		vh: 'Please input VH',		// バーチャルホストのサーバー名
+		root: '../',				// project root
+		src: 'common',				// 共通リソースの配置先
+		compile: 'common/compile'	// コンパイル言語ソース類の配置先
+	};
+
+
 CoffeeScriptを使う人は必ずjsの出力名を記述してください。
 top-levelのfunctionで包括したい方はoptionの部分を消してください。
 
@@ -95,16 +113,16 @@ top-levelのfunctionで包括したい方はoptionの部分を消してくださ
 
     coffee: {
         compile: {
-    		//top-levelのfunctionを付けたい方はoptionを消してください。
-    		options: {
-          			bare: true
-        		},
-    		files:{
-    			//coffeeからjsに出力する際のファイル名指定が必要です。
-    			'common/js/hogehoge.js': ['compile/*.coffee']
-    		}
+            //top-levelのfunctionを付けたい方はoptionを消してください。
+            options: {
+                bare: true
+            },
+            files:{
+                //coffeeからjsに出力する際のファイル名指定が必要です。
+                '<%= path.root %><%= path.src %>/js/run.js': ['<%= path.root %><%= path.compile %>/*.coffee']
+            }
     	}
-    },  
+    }, 
 
 Gruntfile.jsを開き、結合したいcss,jsのパスを通します。  
 上から順に結合されていくので、順番を間違えないようにしてください。  
@@ -142,6 +160,7 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
 ###**⑧ファイル監視を起動**
 
 ①～⑥が終わったら準備完了です。grunt_watch.batを叩いてください。  
+Grunt.jsで設定したVH名でページが開き、ファイルの監視が始まります。
 Sublime Text2でlivereloadのプラグインを入れてる人は、バッティングするのでプラグインをremoveしてから使ってください。  
 この後、コンソールは出したままにしておいてください。最小化しても大丈夫です。  
 以降はscss/css/coffee/jsが更新される度に自動的にコンパイル・結合・圧縮・デバッグが行われます。  
@@ -164,7 +183,9 @@ http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and
 **Chrome**  
 https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkighmdlei  
 
+
 あとは追加されたアドオンのマークを押して、丸の中が赤くなれば成功です。  
+⑧のファイル監視を行っている最中に行ってください。  
 後はhtmlまたはcss(sassの人はscss)を編集して保存した際にブラウザがリロードされればok。
 
 ***

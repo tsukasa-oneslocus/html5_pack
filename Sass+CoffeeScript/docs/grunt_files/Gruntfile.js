@@ -17,13 +17,13 @@ module.exports = function(grunt) {
 		}
 	};
 
-     // パスの設定
-    var pathConfig = {
-        vh: 'iyomante',		// バーチャルホストのサーバー名
-        root: '../',								// project root
-        src: 'common',								// 共通リソースの配置先
-        compile: 'common/compile'					// コンパイル言語ソース類の配置先
-    };
+	// パスの設定
+	var pathConfig = {
+		vh: 'Please input VH',		// バーチャルホストのサーバー名
+		root: '../',				// project root
+		src: 'common',				// 共通リソースの配置先
+		compile: 'common/compile'	// コンパイル言語ソース類の配置先
+	};
 
 	grunt.initConfig({
 
@@ -67,14 +67,16 @@ module.exports = function(grunt) {
 			style: {
 				src: [
 					'<%= path.root %><%= path.src %>/css/normalize.css',
-					'<%= path.root %><%= path.src %>/css/custom.css'
+					'<%= path.root %><%= path.src %>/css/hogehoge.css',
+					'<%= path.root %><%= path.src %>/css/hogehoge2.css'
 				],
 				dest: '<%= path.root %><%= path.src %>/all/style-all.css'
 			},
 			run: {
 				src: [
 					'<%= path.root %><%= path.src %>/js/modernizr.custom.js',
-					'<%= path.root %><%= path.src %>/js/run.js'
+					'<%= path.root %><%= path.src %>/js/hogehoge.js',
+					'<%= path.root %><%= path.src %>/js/hogehoge2.js'
 				],
 				dest: '<%= path.root %><%= path.src %>/all/run-all.js'
 			}
@@ -185,7 +187,7 @@ module.exports = function(grunt) {
                         '<%= path.root %><%= path.src %>/img',
                         '<%= path.root %><%= path.src %>/include',
                         '<%= path.root %><%= path.src %>/js',
-                        '<%= path.root %><%= path.src %>/compile'
+                        '<%= path.root %><%= path.src %>'
                     ]
                 }
             }
@@ -228,7 +230,7 @@ module.exports = function(grunt) {
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['mkdir','copy','clean']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
-	grunt.registerTask('watch_files', ['connect','watch']);
+	grunt.registerTask('watch_files', ['open','connect','watch']);
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。（現在調整中）
 	grunt.registerTask('imagemin', ['imagemin']);
 
