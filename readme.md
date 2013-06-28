@@ -93,18 +93,18 @@ top-levelのfunctionで包括したい方はoptionの部分を消してくださ
 
 ###**coffeeスクリプトのコンパイル**  
 
-`coffee: {`  
-`compile: {`  
-`		//top-levelのfunctionを付けたい方はoptionを消してください。`  
-`		options: {`   
-`      			bare: true`  
-`    		},`  
-`		files:{`  
-`			//coffeeからjsに出力する際のファイル名指定が必要です。`  
-`			'common/js/hogehoge.js': ['compile/*.coffee']`  
-`		}`  
-`	}`  
-`},`  
+    coffee: {
+        compile: {
+    		//top-levelのfunctionを付けたい方はoptionを消してください。
+    		options: {
+          			bare: true
+        		},
+    		files:{
+    			//coffeeからjsに出力する際のファイル名指定が必要です。
+    			'common/js/hogehoge.js': ['compile/*.coffee']
+    		}
+    	}
+    },  
 
 Gruntfile.jsを開き、結合したいcss,jsのパスを通します。  
 上から順に結合されていくので、順番を間違えないようにしてください。  
@@ -112,25 +112,25 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
 
 ###**js,cssファイルの結合**  
 
-`concat: {`  
-`	style: {`  
-`		src: [`  
-`			'common/css/hogehoge.css',`  
-`			'common/css/hogehoge2.css',`  
-`			'common/css/hogehoge3.css'`  
-`		],`  
-`		dest: 'common/all/style-all.css'`  
-`	},`  
-`	run: {`  
-`		src: [`  
-`			'common/js/hogehoge.js',`  
-`			'common/js/hogehoge2.js',`  
-`			'common/js/hogehoge3.js',`  
-`			'common/js/hogehoge4.js'`  
-`		],`  
-`		dest: 'common/all/run-all.js'`  
-`	}`  
-`},`  
+    concat: {
+    	style: {
+    		src: [
+    			'common/css/hogehoge.css',
+    			'common/css/hogehoge2.css',
+    			'common/css/hogehoge3.css'
+    		],
+    		dest: 'common/all/style-all.css'
+    	},
+    	run: {
+    		src: [
+    			'common/js/hogehoge.js',
+    			'common/js/hogehoge2.js',
+    			'common/js/hogehoge3.js',
+    			'common/js/hogehoge4.js'
+    		],
+    		dest: 'common/all/run-all.js
+    	}
+    },
 
 ###**⑦タスクを走らせる**  
 
@@ -191,13 +191,13 @@ jsライブラリ。フィーチャーディテクションができます！！
 html要素などでクラス"no-js"を使えば、今見ているブラウザでどれが使えてどれが使えないのかがhtml上に吐き出してくれます！  
 css属性に目印をつけてくれるので、  
 
-`.sample{`  
-`     box-shadow...`  
-`}`  
+    .sample{
+         box-shadow...
+    }
 
-`html .no-boxshadow .sample{  
-     ….  
-}`  
+    html .no-boxshadow .sample{
+         ….
+    }
 
 
 と記述することで、属性非対応のものに対応することができます。  
