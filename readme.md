@@ -5,6 +5,7 @@
 update 2013.06.28  
 tsukasa-oneslocus  
 https://github.com/tsukasa-oneslocus  
+
 ***
   
 ###**概要**
@@ -57,8 +58,6 @@ Gruntfileを設定せずにディレクトリをいじると基本的に動き�
 ###**①Node.jsをインストール**  
 http://nodejs.org/  
 
-***
-
 ###**②gruntをインストール**  
 Windowsは、キーボードで [win]+[r]を押して、「ファイル名を指定して実行」で cmd を入力。  
 コマンドプロンプトが起動するはずです。  
@@ -67,12 +66,8 @@ Windowsは、キーボードで [win]+[r]を押して、「ファイル名を指
 と入力してgruntをインストールしてください。  
 管理権限等でエラーが出た人は管理者権限でcmdを起動してください。  
 
-***
-
 ###**③ディレクトリ作成**  
 パッケージ内に入っているdocsをディレクトリ内に配置します。docsがrootです。 
-
-***
 
 ###**※Compassについて（Sassを使わない人は読み飛ばしていただいて大丈夫です）**  
 Compass自体は通常通り@import "compass";で使えます。  
@@ -80,13 +75,9 @@ Compassのイメージディレクトリが/common/images/に設定されてい�
 そのため、スプライトシートのインポートはディレクトリ通りにすると  
 @import "sprite/*.png";になります。  
 
-***
-
 ###**④プラグインのインストール**  
 grunt_files/cmd_bat内のgrunt_install.batを叩いてください。
 プラグイン等のインストールが始まります。node_modulesがgrunt_files内に生成されるはずです。
-
-***
 
 ###**⑤ベースとなるディレクトリの生成**
 
@@ -94,15 +85,11 @@ grunt_files/cmd_bat内のgrunt_start.batを叩いてください。
 ベースとなるディレクトリがdocs直下に生成されます。
 この時に雛形のhtmlファイルとnormalize.cssとmodernizr.custom.jsが配置されます。
 
-***
-
 ###**⑥Gruntfileの調整**
 
 Gruntfile.jsの調整を行います。
 CoffeeScriptを使う人は必ずjsの出力名を記述してください。
 top-levelのfunctionで包括したい方はoptionの部分を消してください。
-
-***
 
 ###**coffeeスクリプトのコンパイル**  
 
@@ -122,8 +109,6 @@ top-levelのfunctionで包括したい方はoptionの部分を消してくださ
 Gruntfile.jsを開き、結合したいcss,jsのパスを通します。  
 上から順に結合されていくので、順番を間違えないようにしてください。  
 ちなみにGrunt.jsにおいてルート相対・絶対パスは認識されません。  
-
-***
 
 ###**js,cssファイルの結合**  
 
@@ -147,16 +132,12 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
 `	}`  
 `},`  
 
-***
-
 ###**⑦タスクを走らせる**  
 
 もしすでに制作が進んでいる状態でscss/css/coffee/jsが作成されている場合は、  
 ファイルがディレクトリ通りに配置されているかを確認したうえでgrunt_command.batを叩いてください。  
 一度コンパイル・結合・圧縮・デバッグが行われます。  
 /common/all/配下に結合されたcss/jsファイルが入っていれば成功です。  
-
-***
 
 ###**⑧ファイル監視を起動**
 
@@ -166,21 +147,16 @@ Sublime Text2でlivereloadのプラグインを入れてる人は、バッティ
 以降はscss/css/coffee/jsが更新される度に自動的にコンパイル・結合・圧縮・デバッグが行われます。  
 さらに、htmlとcss(sassを使っている人はscss更新時)の更新時に自動でブラウザがリロードされます。  
 コンソールは消さずに出したままにしておいてください。監視をやめたい場合はコンソール上でCtrl+Cを押してください。　　
-任意のタイミングでコンパイル・結合・圧縮・デバッグを行いたい場合はgrunt_command.batを叩くか、　　
+任意のタイミングでコンパイル・結合・圧縮・デバッグを行いたい場合はgrunt_command.batを叩くか、  
 コンソール上で「grunt」と打ち込んでください。　　
 
-***
-
-###**⑨SVNから設定ファイルを除外する**  
+###**⑨SVNから設定ファイルを除外する**
 
 レポジトリから各種設定ファイルを除外します。  
 「右クリック→TortoiseSVN→バージョン管理から除外し、無視リストに追加」  
 * grunt_filesフォルダ  
 
-***
-
 ###**⑩firefoxまたはchromeに自動リロード用のアドオンorエクステンションを入れる**
-
 
 **Firefox**  
 http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-  
@@ -192,12 +168,13 @@ https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkigh
 あとは追加されたアドオンのマークを押して、丸の中が赤くなれば成功です。  
 後はhtmlまたはcss(sassの人はscss)を編集して保存した際にブラウザがリロードされればok。
 
-////////////////////////////////////////////////////////////////////////////////////
+***
 
 **html5_packageについて**
 ====================================================================  
 2013.05.10 tsukasa-oneslocus  
 https://github.com/tsukasa-oneslocus  
+
 ***
 
 backbone.jsを使うために作成した基本パッケージにhtml5のひな形とよく使われる基本ライブラリを格納したパッケージです。  
