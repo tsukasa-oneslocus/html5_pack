@@ -41,13 +41,13 @@ Gruntfileを設定せずにディレクトリをいじると基本的に動き�
 これを記述することで圧縮時にライセンス記述コメントのみ残るようになります。
 
 （例：  
-`/* @license`  
-`* Bootstrap.js by @fat & @mdo`  
-`*`  
-`* plugins: bootstrap-transition.js, bootstrap-dropdown.js, bootstrap-carousel.js`  
-`* Copyright 2012 Twitter, Inc.`  
-`* http://www.apache.org/licenses/LICENSE-2.0.txt`  
-`*/`  
+    /* @license  
+    * Bootstrap.js by @fat & @mdo  
+    *  
+    * plugins: bootstrap-transition.js, bootstrap-dropdown.js, bootstrap-carousel.js  
+    * Copyright 2012 Twitter, Inc.  
+    * http://www.apache.org/licenses/LICENSE-2.0.txt  
+    */  
 
 ***
 
@@ -147,8 +147,7 @@ Sublime Text2でlivereloadのプラグインを入れてる人は、バッティ
 以降はscss/css/coffee/jsが更新される度に自動的にコンパイル・結合・圧縮・デバッグが行われます。  
 さらに、htmlとcss(sassを使っている人はscss更新時)の更新時に自動でブラウザがリロードされます。  
 コンソールは消さずに出したままにしておいてください。監視をやめたい場合はコンソール上でCtrl+Cを押してください。　　
-任意のタイミングでコンパイル・結合・圧縮・デバッグを行いたい場合はgrunt_command.batを叩くか、  
-コンソール上で「grunt」と打ち込んでください。　　
+任意のタイミングでコンパイル・結合・圧縮・デバッグを行いたい場合はgrunt_command.batを叩くか、コンソール上で「grunt」と打ち込んでください。  　　
 
 ###**⑨SVNから設定ファイルを除外する**
 
@@ -196,9 +195,9 @@ css属性に目印をつけてくれるので、
 `     box-shadow...`  
 `}`  
 
-`html .no-boxshadow .sample{`  
-`     ….`  
-`}`  
+`html .no-boxshadow .sample{  
+     ….  
+}`  
 
 
 と記述することで、属性非対応のものに対応することができます。  
