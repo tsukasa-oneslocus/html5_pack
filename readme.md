@@ -133,20 +133,20 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
     concat: {
     	style: {
     		src: [
-    			'common/css/hogehoge.css',
-    			'common/css/hogehoge2.css',
-    			'common/css/hogehoge3.css'
+    			'<%= path.root %><%= path.src %>/css/hogehoge.css',
+    			'<%= path.root %><%= path.src %>/css/hogehoge2.css',
+    			'<%= path.root %><%= path.src %>/css/hogehoge3.css'
     		],
-    		dest: 'common/all/style-all.css'
+    		dest: '<%= path.root %><%= path.src %>/all/style-all.css'
     	},
     	run: {
     		src: [
-    			'common/js/hogehoge.js',
-    			'common/js/hogehoge2.js',
-    			'common/js/hogehoge3.js',
-    			'common/js/hogehoge4.js'
+    			'<%= path.root %><%= path.src %>/js/hogehoge.js',
+    			'<%= path.root %><%= path.src %>/js/hogehoge2.js',
+    			'<%= path.root %><%= path.src %>/js/hogehoge3.js',
+    			'<%= path.root %><%= path.src %>/js/hogehoge4.js'
     		],
-    		dest: 'common/all/run-all.js
+    		dest: '<%= path.root %><%= path.src %>/all/run-all.js
     	}
     },
 
@@ -155,7 +155,7 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
 もしすでに制作が進んでいる状態でscss/css/coffee/jsが作成されている場合は、  
 ファイルがディレクトリ通りに配置されているかを確認したうえでgrunt_command.batを叩いてください。  
 一度コンパイル・結合・圧縮・デバッグが行われます。  
-/common/all/配下に結合されたcss/jsファイルが入っていれば成功です。  
+src:で設定したパスフォルダ/all/配下に結合されたcss/jsファイルが入っていれば成功です。  
 
 ###**⑧ファイル監視を起動**
 
