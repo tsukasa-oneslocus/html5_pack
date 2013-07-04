@@ -1,4 +1,4 @@
 cd /d %~dp0
-:: 現在のディレクトリに移動
+:: change this directory
 grunt
-:: gruntコマンドの実行
+:: grunt default command

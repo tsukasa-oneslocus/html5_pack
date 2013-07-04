@@ -1,5 +1,5 @@
 cd /d %~dp0
 cd ..
-:: change direction
+:: change parent directory
 grunt start
-:: grunt構造初期設定
+:: grunt start

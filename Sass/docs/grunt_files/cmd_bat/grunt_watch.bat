@@ -1,6 +1,6 @@
 cd /d %~dp0
 cd ..
-:: 現在のディレクトリに移動
+:: change parent directory
 grunt watch_files
-:: 各種ファイルの監視
+:: watch start
 cmd /k

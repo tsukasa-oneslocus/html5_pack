@@ -1,5 +1,5 @@
 cd /d %~dp0
 cd ..
-:: change direction
+:: change parent directory
 npm install
-:: moduleインストール
+:: module install
