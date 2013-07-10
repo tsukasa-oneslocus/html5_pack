@@ -20,15 +20,16 @@ Gruntfile.jsを変更することで設定の変更やディレクトリの変�
 
 * ディレクトリの初期構築・初期構築後の不要ファイル削除  
 * CoffeeScriptのコンパイル  
-* Sassのコンパイル  
+* Sassのコンパイル
 * css/jsファイルの結合＆圧縮  
 * jsHintによるデバッグ  
 * watchによるファイル更新の監視→コンパイル・結合・圧縮・デバッグの自動化  
 * 自動ブラウザリロード  
-  
+* 画像圧縮　　
+
 ###**次期追加予定機能**  
 
-* 画像圧縮  
+* gzip圧縮（うーん・・・環境依存とCPU負担がなぁ）  
 * jQueryカスタムビルド  
 
 ***
@@ -75,17 +76,13 @@ Compassのイメージディレクトリが/common/images/に設定されてい�
 そのため、スプライトシートのインポートはディレクトリ通りにすると  
 @import "sprite/*.png";になります。  
 
-###**④プラグインのインストール**  
-grunt_files/cmd_bat内のgrunt_install.batを叩いてください。
-プラグイン等のインストールが始まります。node_modulesがgrunt_files内に生成されるはずです。
+###**④プラグインのインストール+ベースとなるディレクトリの生成**  
+grunt_files/cmd_bat内のgrunt_install.batを叩いてください。  
+プラグイン等のインストールが始まります。node_modulesがgrunt_files内に生成されるはずです。  
+その後、しばらくするとベースとなるディレクトリがdocs直下に生成されます。  
+この時にlibフォルダに入っている雛形のhtmlファイルとnormalize.cssとmodernizr.custom.jsが配置されます。
 
-###**⑤ベースとなるディレクトリの生成**
-
-grunt_files/cmd_bat内のgrunt_start.batを叩いてください。
-ベースとなるディレクトリがdocs直下に生成されます。
-この時に雛形のhtmlファイルとnormalize.cssとmodernizr.custom.jsが配置されます。
-
-###**⑥Gruntfileの調整**
+###**⑤Gruntfileの調整**
 
 Gruntfile.jsの調整を行います。
 
@@ -150,14 +147,14 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
     	}
     },
 
-###**⑦タスクを走らせる**  
+###**⑥タスクを走らせる**  
 
 もしすでに制作が進んでいる状態でscss/css/coffee/jsが作成されている場合は、  
 ファイルがディレクトリ通りに配置されているかを確認したうえでgrunt_command.batを叩いてください。  
 一度コンパイル・結合・圧縮・デバッグが行われます。  
 src:で設定したパスフォルダ/all/配下に結合されたcss/jsファイルが入っていれば成功です。  
 
-###**⑧ファイル監視を起動**
+###**⑦ファイル監視を起動**
 
 ①～⑥が終わったら準備完了です。grunt_watch.batを叩いてください。  
 Grunt.jsで設定したVH名でページが開き、ファイルの監視が始まります。
@@ -168,13 +165,13 @@ Sublime Text2でlivereloadのプラグインを入れてる人は、バッティ
 コンソールは消さずに出したままにしておいてください。監視をやめたい場合はコンソール上でCtrl+Cを押してください。　　
 任意のタイミングでコンパイル・結合・圧縮・デバッグを行いたい場合はgrunt_command.batを叩くか、コンソール上で「grunt」と打ち込んでください。  　　
 
-###**⑨SVNから設定ファイルを除外する**
+###**⑧SVNから設定ファイルを除外する**
 
 レポジトリから各種設定ファイルを除外します。  
 「右クリック→TortoiseSVN→バージョン管理から除外し、無視リストに追加」  
 * grunt_filesフォルダ  
 
-###**⑩firefoxまたはchromeに自動リロード用のアドオンorエクステンションを入れる**
+###**⑨firefoxまたはchromeに自動リロード用のアドオンorエクステンションを入れる**
 
 **Firefox**  
 http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-  
@@ -185,8 +182,29 @@ https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkigh
 
 
 あとは追加されたアドオンのマークを押して、丸の中が赤くなれば成功です。  
-⑧のファイル監視を行っている最中に行ってください。  
+⑦のファイル監視を行っている最中に行ってください。  
 後はhtmlまたはcss(sassの人はscss)を編集して保存した際にブラウザがリロードされればok。
+
+###**⑩仕上げの時に画像圧縮を行う**
+
+batフォルダの中にあるgrunt_imagemin.batを叩くと画像圧縮が始まります。  
+現状第3階層までのフォルダの中の画像を圧縮しますが、さらに階層を掘り下げたい時は
+
+    imagemin: {
+        dist: {
+            options: {
+                    optimizationLevel: 3
+                },
+            files: [{
+                expand: true,
+                src: [
+                    '<%= path.root %>/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/**/*.{png, jpg, jpeg}'
+                ]
+            }]
+        }
+    },
+
+上記の記述のsrcの中を追記していただけると追加することができます。
 
 ***
 
