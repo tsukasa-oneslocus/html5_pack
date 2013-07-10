@@ -98,7 +98,7 @@ module.exports = function(grunt) {
 		},
 		//-----------------------------------------------------------------------
 
-		/* 画像最適化（現在調整中）
+		/* 画像最適化
         ---------------------------------------------------*/
         imagemin: {
             dist: {
@@ -108,7 +108,7 @@ module.exports = function(grunt) {
                 files: [{
                     expand: true,
                     src: [
-                        '<%= path.root %>/**/*.{png, jpg, jpeg}'
+                        '<%= path.root %>/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/**/*.{png, jpg, jpeg}'
                     ]
                 }]
             }
@@ -203,7 +203,6 @@ module.exports = function(grunt) {
                 src: [
                     'assets',
                     '<%= path.root %>/grunt_files/lib',
-                    '<%= path.root %>/grunt_files/cmd_bat/grunt_start.bat',
                     '<%= path.root %>/grunt_files/cmd_bat/grunt_install.bat'
                 ]
             }
@@ -217,7 +216,7 @@ module.exports = function(grunt) {
 	grunt.registerTask('start', ['mkdir','copy','clean']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
 	grunt.registerTask('watch_files', ['open','connect','watch']);
-	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。（現在調整中）
+	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
 
 	// loadNpmTasksを変更（プラグイン読み込み）
