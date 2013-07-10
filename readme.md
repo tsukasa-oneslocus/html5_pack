@@ -2,7 +2,7 @@
 ====================================================================
 **Windows環境用batファイル付**  
   
-update 2013.06.28  
+update 2013.07.10  
 tsukasa-oneslocus  
 https://github.com/tsukasa-oneslocus  
 
