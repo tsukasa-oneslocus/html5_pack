@@ -219,7 +219,16 @@ module.exports = function(grunt) {
                     '<%= path.root %>/grunt_files/lib',
                     '<%= path.root %>/grunt_files/cmd_bat/grunt_install.bat'
                 ]
-            }
+            },
+			jquery: {
+				options: {
+					force: true // 強制的に上位ディレクトリを削除
+				},
+				src: [
+					'assets',
+					'<%= path.root %>/grunt_files/cmd_bat/grunt_jquerybuild_startup.bat'
+				]
+			}
         }
         //-----------------------------------------------------------------------
 	});
@@ -232,6 +241,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('watch_files', ['open','connect','watch']);
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
+	// grunt jqueryカスタムビルド後の初期設定削除タスク。
+	grunt.registerTask('jquery_startup', ['crean:jquery']);
 
 	// loadNpmTasksを変更（プラグイン読み込み）
 	var taskName;
