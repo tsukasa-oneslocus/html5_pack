@@ -29,8 +29,8 @@ Gruntfile.jsを変更することで設定の変更やディレクトリの変�
 
 ###**次期追加予定機能**  
 
-* gzip圧縮（うーん・・・環境依存とCPU負担がなぁ）  
-* jQueryカスタムビルド  
+* TypeScriptのコンパイル
+* yeoman,bowerとの連携  
 
 ***
 
