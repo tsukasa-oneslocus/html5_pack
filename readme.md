@@ -209,43 +209,6 @@ optimizationLevelを変更することで圧縮レベルを変更できます。
 
 ***
 
-**jQueryカスタムビルドについて**
-====================================================================
-
-2013.07.12 tsukasa-oneslocus  
-https://github.com/tsukasa-oneslocus  
-
-***
-jqueryのカスタムビルド機能を手軽に実装できるようにbatを用意してあります。  
-しかし、下準備にmsysgitのインストールが必要になります。  
-
-**git msysgit**  
-http://msysgit.github.io/
-
-最新版をインストールする際に  
-「Run Git from the Windows Command Prompt」と「Checkout as-is, commit as-is」を選択してください。  
-
-正常にインストールされているのを確認してgrunt_jquerybuild_startup.batを叩いてください。予め必要なものが一通りインストールされ、このbat自体も削除されます。その後にgrunt_jquerybuild.batを叩けばビルドが開始されますが、バージョンの指定とビルドの内容はbatを直接編集して設定していただく必要があります。
-
-    :: select jquery version
-    git checkout tags/1.10.2
-    
-「1.10.2」の部分がバージョン指定になるので、ビルドしたいjQueryのバージョンを指定してください。
-
-    :: custom build command
-    grunt custom:-ajax
-    
-こちらがビルドの設定になります。  
-どこを削ればどの機能が無くなるかなどはgitで確認してください。  
-https://github.com/jquery/jquery
-
-**構築例**
-
-    :: custom build command
-    grunt custom:-ajax,-css,-effects
-    
-***
-
 **html5_packageについて**
 ====================================================================  
 2013.07.10 tsukasa-oneslocus  
