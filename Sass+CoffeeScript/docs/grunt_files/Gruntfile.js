@@ -242,7 +242,7 @@ module.exports = function(grunt) {
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
 	// grunt jqueryカスタムビルド後の初期設定削除タスク。
-	grunt.registerTask('jquery_startup', ['crean:jquery']);
+	grunt.registerTask('jquery_startup', ['clean:jquery']);
 
 	// loadNpmTasksを変更（プラグイン読み込み）
 	var taskName;
