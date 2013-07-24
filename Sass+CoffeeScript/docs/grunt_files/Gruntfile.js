@@ -187,7 +187,7 @@ module.exports = function(grunt) {
                         '<%= path.root %><%= path.src %>/img',
                         '<%= path.root %><%= path.src %>/include',
                         '<%= path.root %><%= path.src %>/js',
-                        '<%= path.root %><%= path.src %>'
+                        '<%= path.root %><%= path.src %>/compile'
                     ]
                 }
             }
