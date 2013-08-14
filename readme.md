@@ -2,7 +2,7 @@
 ====================================================================
 **Windows環境用batファイル付**  
   
-update 2013.07.12  
+update 2013.08.14  
 tsukasa-oneslocus  
 https://github.com/tsukasa-oneslocus  
 
@@ -26,12 +26,14 @@ Gruntfile.jsを変更することで設定の変更やディレクトリの変�
 * watchによるファイル更新の監視→コンパイル・結合・圧縮・デバッグの自動化  
 * 自動ブラウザリロード  
 * 画像圧縮
-* config.rb連動によるスプライト画像のランダム文字列消去　　
+* config.rb連動によるスプライト画像のランダム文字列消去
+* cssプロパティの並び替え（結合css出力後、圧縮する前に並び替えます）
+* webfont作成機能（Macのみ有効→まだMacに対応していないため、仮実装です）
 
 ###**次期追加予定機能**  
-
 * TypeScriptのコンパイル
-* yeoman,bowerとの連携  
+* Mac対応のAppleScriptファイル（batファイルに当たるもの）作成
+* yeoman,bowerとの連携
 
 ***
 
@@ -207,6 +209,30 @@ batフォルダの中にあるgrunt_imagemin.batを叩くと画像圧縮が始�
 
 上記の記述のsrcの中を追記していただけると追加することができます。  
 optimizationLevelを変更することで圧縮レベルを変更できます。（0～7）
+
+###**⑪webfontの作成を行う**
+
+webfontを作成する場合は、fontforge等をインストールする必要があります。 (Macのみ対応)
+ 
+    sudo install -g fontforge ttfautohint
+    sudo install -g https://raw.github.com/sapegin/grunt-webfont/master/Formula/sfnt2woff.rb
+
+batフォルダの中にあるgrunt_imagemin.batを叩くと画像圧縮が始まります。  
+初期設定ではiconフォルダからsvgファイルを取り込み、各種ファイルをfontsフォルダに吐き出す設定になっています。  
+出力先などを変更したい場合は下記のディレクトリを調整してください。
+
+    webfont: {
+        icons: {
+            src: '<%= path.root %><%= path.src %>/icons/*.svg',
+            dest: '<%= path.root %><%= path.src %>/icons/fonts',
+            destCss: '<%= path.root %><%= path.src %>/icons/fonts',
+            options: {
+                stylesheet: 'scss',
+                relativeFontPath: '<%= path.root %><%= path.src %>/icons/fonts'
+            }
+        }
+    },
+
 
 ***
 
