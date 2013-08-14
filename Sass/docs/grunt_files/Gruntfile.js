@@ -28,9 +28,8 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 
 		/* パス設定のロード
-		---------------------------------------------------*/
+		------------------------------------------------------------------------*/
 		path: pathConfig,
-
 		//-----------------------------------------------------------------------
 
 		/* Scssのコンパイル
@@ -44,6 +43,15 @@ module.exports = function(grunt) {
 					imagesDir : '<%= path.root %><%= path.src %>/img',
 					config: 'config.rb'
 				}
+			}
+		},
+		//-----------------------------------------------------------------------
+		
+		/* cssのプロパティ並び替え（上書きが困る場合は左側のパスを変更してください）
+		------------------------------------------------------------------------*/
+		csscomb: {
+			files: {
+				'<%= path.root %><%= path.src %>/all/style-all.css': ['<%= path.root %><%= path.src %>/all/style-all.css'],
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -81,6 +89,8 @@ module.exports = function(grunt) {
 				dest: '<%= path.root %><%= path.src %>/all/run-all.min.js'
 			}
 		},
+		//-----------------------------------------------------------------------
+
 		/* cssファイルの圧縮
 		------------------------------------------------------------------------*/
 		cssmin: {
@@ -100,7 +110,7 @@ module.exports = function(grunt) {
 		//-----------------------------------------------------------------------
 
 		/* 画像最適化
-        ---------------------------------------------------*/
+        ------------------------------------------------------------------------*/
         imagemin: {
             dist: {
                options: {
@@ -115,6 +125,20 @@ module.exports = function(grunt) {
             }
         },
         //-----------------------------------------------------------------------
+
+        /* アイコンフォント作成
+         ------------------------------------------------------------------------*/
+        webfont: {
+            icons: {
+                src: '<%= path.root %><%= path.src %>/icons/*.svg',
+                dest: '<%= path.root %><%= path.src %>/icons/fonts',
+                destCss: '<%= path.root %><%= path.src %>/icons/fonts',
+                options: {
+                    stylesheet: 'scss',
+                    relativeFontPath: '<%= path.root %><%= path.src %>/icons/fonts'
+                }
+            }
+        },
 
 		/* 変更保存の監視。指定階層のcoffee,scss,htmlの更新時にタスクを行う
 		------------------------------------------------------------------------*/
@@ -133,7 +157,7 @@ module.exports = function(grunt) {
 			},
 			sass:{
 				files:['<%= path.root %><%= path.compile %>/*.scss'],
-				tasks:['compass','concat:style','cssmin']
+				tasks:['compass','concat:style','csscomb','cssmin']
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -164,7 +188,7 @@ module.exports = function(grunt) {
         //-----------------------------------------------------------------------
 
         /* 初期ディレクトリ作成
-        ---------------------------------------------------*/
+        ------------------------------------------------------------------------*/
         mkdir: {
             prepare: {
                 options: {
@@ -174,7 +198,9 @@ module.exports = function(grunt) {
                         '<%= path.root %><%= path.src %>/img',
                         '<%= path.root %><%= path.src %>/include',
                         '<%= path.root %><%= path.src %>/js',
-                        '<%= path.root %><%= path.src %>/compile'
+                        '<%= path.root %><%= path.src %>/compile',
+                        '<%= path.root %><%= path.src %>/icons',
+                        '<%= path.root %><%= path.src %>/icons/fonts'
                     ]
                 }
             }
@@ -182,7 +208,7 @@ module.exports = function(grunt) {
         //-----------------------------------------------------------------------
 
         /* データ複製
-        ---------------------------------------------------*/
+        ------------------------------------------------------------------------*/
         copy: {
             setup: {
                 files: [
@@ -195,7 +221,7 @@ module.exports = function(grunt) {
         //-----------------------------------------------------------------------
 
         /* 不要初期ファイル削除
-        ---------------------------------------------------*/
+        ------------------------------------------------------------------------*/
         clean: {
             prepare: {
                 options: {
@@ -212,13 +238,15 @@ module.exports = function(grunt) {
 	});
 
 	// gruntコマンドを打つと走るタスクです。
-	grunt.registerTask('default', ['compass','concat','uglify','cssmin','jshint']);
+	grunt.registerTask('default', ['compass','concat','csscomb','uglify','cssmin','jshint']);
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['mkdir','copy','clean:prepare']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
 	grunt.registerTask('watch_files', ['open','connect','watch']);
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
+    // grunt webfontコマンドを打つと走るタスクです。svgからwebfontを作成します。
+    grunt.registerTask('webfont', ['webfont']);
 
 	// loadNpmTasksを変更（プラグイン読み込み）
 	var taskName;
