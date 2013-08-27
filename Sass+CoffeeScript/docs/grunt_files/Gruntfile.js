@@ -52,10 +52,11 @@ module.exports = function(grunt) {
 		compass: {
 			dist: {
 				options: {
-					sassDir: '<%= path.root %><%= path.compile %>',
-					cssDir: '<%= path.root %><%= path.src %>/css',
+					basePath: '<%= path.root %>',
+					sassDir: '<%= path.compile %>',
+					cssDir: '<%= path.src %>/css',
 					//compassのimgディレクトリ（スプライトを書き出すディレクトリ
-					imagesDir : '<%= path.root %><%= path.src %>/img',
+					imagesDir : '<%= path.src %>/img',
 					config: 'config.rb'
 				}
 			}
