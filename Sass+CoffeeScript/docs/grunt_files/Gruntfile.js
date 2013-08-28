@@ -63,15 +63,6 @@ module.exports = function(grunt) {
 		},
 		//-----------------------------------------------------------------------
 
-        /* cssのプロパティ並び替え（上書きが困る場合は左側のパスを変更してください）
-         ------------------------------------------------------------------------*/
-        csscomb: {
-            files: {
-                '<%= path.root %><%= path.src %>/all/style-all.css': ['<%= path.root %><%= path.src %>/all/style-all.css'],
-            }
-        },
-        //-----------------------------------------------------------------------
-
 		/* js,cssファイルの結合
 		------------------------------------------------------------------------*/
 		concat: {
@@ -139,20 +130,6 @@ module.exports = function(grunt) {
             }
         },
         //-----------------------------------------------------------------------
-
-        /* アイコンフォント作成
-         ------------------------------------------------------------------------*/
-        webfont: {
-            icons: {
-                src: '<%= path.root %><%= path.src %>/icons/*.svg',
-                dest: '<%= path.root %><%= path.src %>/icons/fonts',
-                destCss: '<%= path.root %><%= path.src %>/icons/fonts',
-                options: {
-                    stylesheet: 'scss',
-                    relativeFontPath: '<%= path.root %><%= path.src %>/icons/fonts'
-                }
-            }
-        },
 
 		/* 変更保存の監視。指定階層のcoffee,scss,htmlの更新時にタスクを行う
 		------------------------------------------------------------------------*/
@@ -257,8 +234,6 @@ module.exports = function(grunt) {
 	grunt.registerTask('watch_files', ['open','connect','watch']);
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
-    // grunt webfontコマンドを打つと走るタスクです。svgからwebfontを作成します。
-    grunt.registerTask('webfont', ['webfont']);
 
 	// loadNpmTasksを変更（プラグイン読み込み）
 	var taskName;
