@@ -31,18 +31,20 @@ module.exports = function(grunt) {
 		---------------------------------------------------*/
 		path: pathConfig,
 
-		/* coffeeスクリプトのコンパイル
-		------------------------------------------------------------------------*/
+		/* coffeescriptのコンパイル
+		 ------------------------------------------------------------------------*/
 		coffee: {
 			compile: {
 				//top-levelのfunctionを付けたい方はoptionを消してください。
 				options: {
 					bare: true
 				},
-				files:{
-					//coffeeからjsに出力する際のファイル名指定が必要です。
-					'<%= path.root %><%= path.src %>/js/run.js': ['<%= path.root %><%= path.compile %>/*.coffee']
-				}
+				expand: true,
+				flatten: true,
+				cwd: '<%= path.root %><%= path.compile %>',
+				src: ['*.coffee'],
+				dest: '<%= path.root %><%= path.src %>/js',
+				ext: '.js'
 			}
 		},
 		//-----------------------------------------------------------------------
