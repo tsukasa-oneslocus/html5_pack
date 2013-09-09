@@ -18,20 +18,20 @@ Gruntfile.jsを変更することで設定の変更やディレクトリの変�
 
 ###**機能**  
 
-* ディレクトリの初期構築・初期構築後の不要ファイル削除  
-* CoffeeScriptのコンパイル  
+* ディレクトリの初期構築・初期構築後の不要ファイル削除
+* CoffeeScriptのコンパイル
+* TypeScriptのコンパイル
 * Sassのコンパイル
-* css/jsファイルの結合＆圧縮  
-* jsHintによるデバッグ  
-* watchによるファイル更新の監視→コンパイル・結合・圧縮・デバッグの自動化  
-* 自動ブラウザリロード  
+* css/jsファイルの結合＆圧縮
+* jsHintによるデバッグ
+* watchによるファイル更新の監視→コンパイル・結合・圧縮・デバッグの自動化
+* 自動ブラウザリロード
 * 画像圧縮
 * config.rb連動によるスプライト画像のランダム文字列消去
 
 ###**次期追加予定機能**  
-* TypeScriptのコンパイル
 * yeoman,bowerとの連携
-
+* Mac対応＋webfont&css-comb対応
 ***
 
 ###**諸注意**  
@@ -102,30 +102,15 @@ Gruntfile.jsの調整を行います。
 		compile: 'common/compile'	// コンパイル言語ソース類の配置先
 	};
 
+###**CoffeeScriptのコンパイル**  
 
-CoffeeScriptを使う人は必ずjsの出力名を記述してください。
-top-levelのfunctionで包括したい方はoptionの部分を消してください。
+CoffeeScript/TypeScriptファイルは⑤で設定したコンパイル言語ファイルの格納先に入れることになります。CoffeeScriptを使う人でtop-levelのfunctionで包括したい方はoptionの部分を消してください。
 
-###**coffeeスクリプトのコンパイル**  
-
-    coffee: {
-        compile: {
-            //top-levelのfunctionを付けたい方はoptionを消してください。
-            options: {
-                bare: true
-            },
-            files:{
-                //coffeeからjsに出力する際のファイル名指定が必要です。
-                '<%= path.root %><%= path.src %>/js/run.js': ['<%= path.root %><%= path.compile %>/*.coffee']
-            }
-    	}
-    }, 
+###**js,cssファイルの結合** 
 
 Gruntfile.jsを開き、結合したいcss,jsのパスを通します。  
 上から順に結合されていくので、順番を間違えないようにしてください。  
-ちなみにGrunt.jsにおいてルート相対・絶対パスは認識されません。  
-
-###**js,cssファイルの結合**  
+ちなみにGrunt.jsにおいてルート相対・絶対パスは認識されません。   
 
     concat: {
     	style: {
