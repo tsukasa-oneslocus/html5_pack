@@ -32,6 +32,7 @@ Gruntfile.jsを変更することで設定の変更やディレクトリの変�
 ###**次期追加予定機能**  
 * yeoman,bowerとの連携
 * Macパッケージのみwebfont&css-comb対応
+
 ***
 
 ###**諸注意**  
