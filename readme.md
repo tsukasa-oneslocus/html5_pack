@@ -1,8 +1,8 @@
 **html5_package with grunt.js**  
 ====================================================================
-**Windows環境用batファイル付**  
+**Windows環境用batファイル/Mac環境用commandファイル付**  
   
-update 2013.08.28  
+update 2013.09.27  
 tsukasa-oneslocus  
 https://github.com/tsukasa-oneslocus  
 
@@ -31,7 +31,7 @@ Gruntfile.jsを変更することで設定の変更やディレクトリの変�
 
 ###**次期追加予定機能**  
 * yeoman,bowerとの連携
-* Mac対応＋webfont&css-comb対応
+* Macパッケージのみwebfont&css-comb対応
 ***
 
 ###**諸注意**  
@@ -77,7 +77,7 @@ Compassのイメージディレクトリが/common/images/に設定されてい�
 @import "sprite/*.png";になります。  
 
 ###**④プラグインのインストール+ベースとなるディレクトリの生成**  
-grunt_files/cmd_bat内のgrunt_install.batを叩いてください。  
+grunt_files/cmd_bat内のgrunt_install.batまたはgrunt_install.commandを叩いてください。  
 プラグイン等のインストールが始まります。node_modulesがgrunt_files内に生成されるはずです。  
 その後、しばらくするとベースとなるディレクトリがdocs直下に生成されます。  
 この時にlibフォルダに入っている雛形のhtmlファイルとnormalize.cssとmodernizr.custom.jsが配置されます。
@@ -135,7 +135,7 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
 ###**⑥タスクを走らせる**  
 
 もしすでに制作が進んでいる状態でscss/css/coffee/jsが作成されている場合は、  
-ファイルがディレクトリ通りに配置されているかを確認したうえでgrunt_command.batを叩いてください。  
+ファイルがディレクトリ通りに配置されているかを確認したうえでgrunt_command.batまたはgrunt_command.comandを叩いてください。  
 一度コンパイル・結合・圧縮・デバッグが行われます。  
 src:で設定したパスフォルダ/all/配下に結合されたcss/jsファイルが入っていれば成功です。  
 
@@ -148,11 +148,12 @@ Sublime Text2でlivereloadのプラグインを入れてる人は、バッティ
 以降はscss/coffee/js(Sassのみの時)が更新される度に自動的にコンパイル・結合・圧縮・デバッグが行われます。  
 さらに、htmlとcss(sassを使っている人はscss更新時)の更新時に自動でブラウザがリロードされます。  
 コンソールは消さずに出したままにしておいてください。監視をやめたい場合はコンソール上でCtrl+Cを押してください。　　
-任意のタイミングでコンパイル・結合・圧縮・デバッグを行いたい場合はgrunt_command.batを叩くか、コンソール上で「grunt」と打ち込んでください。  　　
+任意のタイミングでコンパイル・結合・圧縮・デバッグを行いたい場合はgrunt_command.batまたはgrunt_command.commandを叩くか、コンソール上で「grunt」と打ち込んでください。  　　
 
-###**⑧SVNから設定ファイルを除外する**
+###**⑧SVN等のバージョン管理ソフトから設定ファイルを除外する**
 
 レポジトリから各種設定ファイルを除外します。  
+**※SVNの場合**  
 「右クリック→TortoiseSVN→バージョン管理から除外し、無視リストに追加」  
 * grunt_filesフォルダ  
 
@@ -172,7 +173,7 @@ https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkigh
 
 ###**⑩仕上げの時に画像圧縮を行う**
 
-batフォルダの中にあるgrunt_imagemin.batを叩くと画像圧縮が始まります。  
+batフォルダの中にあるgrunt_imagemin.batまたはgrunt_imagemin.commandを叩くと画像圧縮が始まります。  
 現状第3階層までのフォルダの中の画像を圧縮しますが、さらに階層を掘り下げたい時は
 
     imagemin: {
