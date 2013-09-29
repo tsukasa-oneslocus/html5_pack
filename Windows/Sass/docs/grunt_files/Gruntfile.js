@@ -176,9 +176,7 @@ module.exports = function(grunt) {
                         '<%= path.root %><%= path.src %>/img',
                         '<%= path.root %><%= path.src %>/include',
                         '<%= path.root %><%= path.src %>/js',
-                        '<%= path.root %><%= path.src %>/compile',
-                        '<%= path.root %><%= path.src %>/icons',
-                        '<%= path.root %><%= path.src %>/icons/fonts'
+                        '<%= path.root %><%= path.src %>/compile'
                     ]
                 }
             }
