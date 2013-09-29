@@ -1,15 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2202660b-7d7d-4320-baab-ac60b3e8e293" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mac/Sass+CoffeeScript/docs/grunt_files/Gruntfile.js" afterPath="$PROJECT_DIR$/Mac/Sass+CoffeeScript/docs/grunt_files/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mac/Sass+TypeScript/docs/grunt_files/Gruntfile.js" afterPath="$PROJECT_DIR$/Mac/Sass+TypeScript/docs/grunt_files/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mac/Sass/docs/grunt_files/Gruntfile.js" afterPath="$PROJECT_DIR$/Mac/Sass/docs/grunt_files/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Windows/Sass/docs/grunt_files/Gruntfile.js" afterPath="$PROJECT_DIR$/Windows/Sass/docs/grunt_files/Gruntfile.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mac/Sass+CoffeeScript/docs/grunt_files/package.json" afterPath="$PROJECT_DIR$/Mac/Sass+CoffeeScript/docs/grunt_files/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mac/Sass+TypeScript/docs/grunt_files/package.json" afterPath="$PROJECT_DIR$/Mac/Sass+TypeScript/docs/grunt_files/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Mac/Sass/docs/grunt_files/package.json" afterPath="$PROJECT_DIR$/Mac/Sass/docs/grunt_files/package.json" />
-    </list>
+    <list default="true" id="2202660b-7d7d-4320-baab-ac60b3e8e293" name="Default" comment="" />
     <ignored path="html5_pack.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="TRACKING_ENABLED" value="true" />
