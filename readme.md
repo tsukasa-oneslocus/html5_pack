@@ -144,7 +144,7 @@ src:で設定したパスフォルダ/all/配下に結合されたcss/jsファ�
 
 ###**⑦ファイル監視を起動**
 
-①～⑥が終わったら準備完了です。grunt_watch.batを叩いてください。  
+①～⑥が終わったら準備完了です。grunt_watch.batまたはgrunt_watch.commandを叩いてください。  
 Grunt.jsで設定したVH名でページが開き、ファイルの監視が始まります。
 Sublime Text2でlivereloadのプラグインを入れてる人は、バッティングするのでプラグインをremoveしてから使ってください。  
 この後、コンソールは出したままにしておいてください。最小化しても大丈夫です。  
@@ -175,6 +175,28 @@ https://chrome.google.com/webstore/detail/livereload/jnihajbhpnppcggbcgedagnkigh
 後はhtmlまたはcss(sassの人はscss)を編集して保存した際にブラウザがリロードされればok。
 
 ###**⑩仕上げの時に画像圧縮を行う**
+
+batフォルダの中にあるgrunt_imagemin.batまたはgrunt_imagemin.commandを叩くと画像圧縮が始まります。  
+現状第3階層までのフォルダの中の画像を圧縮しますが、さらに階層を掘り下げたい時は
+
+    imagemin: {
+        dist: {
+            options: {
+                    optimizationLevel: 3
+                },
+            files: [{
+                expand: true,
+                src: [
+                    '<%= path.root %>/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/**/*.{png, jpg, jpeg}'
+                ]
+            }]
+        }
+    },
+
+上記の記述のsrcの中を追記していただけると追加することができます。  
+optimizationLevelを変更することで圧縮レベルを変更できます。（0～7）
+
+###**⑪webfontの作成（Macのみ）**
 
 batフォルダの中にあるgrunt_imagemin.batまたはgrunt_imagemin.commandを叩くと画像圧縮が始まります。  
 現状第3階層までのフォルダの中の画像を圧縮しますが、さらに階層を掘り下げたい時は
