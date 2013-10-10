@@ -229,7 +229,7 @@ module.exports = function(grunt) {
 	});
 
 	// gruntコマンドを打つと走るタスクです。
-	grunt.registerTask('default', ['coffee','compass','concat','csscomb','uglify','cssmin','jshint']);
+	grunt.registerTask('default', ['coffee','compass','concat','uglify','cssmin','jshint']);
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['mkdir','copy','clean:prepare']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
