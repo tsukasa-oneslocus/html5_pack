@@ -2,7 +2,7 @@
 ====================================================================
 **Windows環境用batファイル/Mac環境用commandファイル付**  
   
-update 2013.09.30  
+update 2013.10.14  
 tsukasa-oneslocus  
 https://github.com/tsukasa-oneslocus  
 
@@ -33,6 +33,9 @@ Gruntfile.jsを変更することで設定の変更やディレクトリの変�
 
 ###**次期追加予定機能**  
 * yeoman,bowerとの連携
+
+###**更新**  
+* 2013.10.17 grunt-contrib-watchのメモリ消費が激しいため、grunt-este-watchとlivereloadxに変更 
 
 ***
 
@@ -67,11 +70,13 @@ Macは、ターミナルを開いてください。Macintosh HD>アプリケー�
 起動したらすかさず  
 `npm install -g grunt-cli`  
 と入力してgruntをインストールしてください。  
-Win環境の人で管理権限等でエラーが出た人は管理者権限でcmdを起動してください。
-
+Win環境の人で管理権限等でエラーが出た人は管理者権限でcmdを起動してください。  
+gruntのインストールを確認後、  
+`npm install -g livereloadx`  
+と入力してlivereloadxをインストールしてください。 
 
 ###**③ディレクトリ作成**  
-パッケージ内に入っているdocsをディレクトリ内に配置します。docsがrootです。 
+パッケージ内に入っているgrunt_filesをルートディレクトリとなる階層に配置します。
 
 ###**※Compassについて（Sassを使わない人は読み飛ばしていただいて大丈夫です）**  
 Compass自体は通常通り@import "compass";で使えます。  
@@ -82,7 +87,7 @@ Compassのイメージディレクトリが/common/images/に設定されてい�
 ###**④プラグインのインストール+ベースとなるディレクトリの生成**  
 grunt_files/cmd_bat内のgrunt_install.batまたはgrunt_install.commandを叩いてください。  
 プラグイン等のインストールが始まります。node_modulesがgrunt_files内に生成されるはずです。  
-その後、しばらくするとベースとなるディレクトリがdocs直下に生成されます。  
+その後、しばらくするとベースとなるディレクトリがgrunt_filesと同階層に生成されます。  
 この時にlibフォルダに入っている雛形のhtmlファイルとnormalize.cssとmodernizr.custom.jsが配置されます。
 
 ###**⑤Gruntfileの調整**
@@ -100,7 +105,7 @@ Gruntfile.jsの調整を行います。
 	// パスの設定
 	var pathConfig = {
 		vh: 'Please input VH',		// バーチャルホストのサーバー名
-		root: '../',				// project root
+		root: '../docs',				// project root
 		src: 'common',				// 共通リソースの配置先
 		compile: 'common/compile'	// コンパイル言語ソース類の配置先
 	};
@@ -118,20 +123,20 @@ Gruntfile.jsを開き、結合したいcss,jsのパスを通します。
     concat: {
     	style: {
     		src: [
-    			'<%= path.root %><%= path.src %>/css/hogehoge.css',
-    			'<%= path.root %><%= path.src %>/css/hogehoge2.css',
-    			'<%= path.root %><%= path.src %>/css/hogehoge3.css'
+    			'<%= path.root %>/<%= path.src %>/css/hogehoge.css',
+    			'<%= path.root %>/<%= path.src %>/css/hogehoge2.css',
+    			'<%= path.root %>/<%= path.src %>/css/hogehoge3.css'
     		],
-    		dest: '<%= path.root %><%= path.src %>/all/style-all.css'
+    		dest: '<%= path.root %>/<%= path.src %>/all/style-all.css'
     	},
     	run: {
     		src: [
-    			'<%= path.root %><%= path.src %>/js/hogehoge.js',
-    			'<%= path.root %><%= path.src %>/js/hogehoge2.js',
-    			'<%= path.root %><%= path.src %>/js/hogehoge3.js',
-    			'<%= path.root %><%= path.src %>/js/hogehoge4.js'
+    			'<%= path.root %>/<%= path.src %>/js/hogehoge.js',
+    			'<%= path.root %>/<%= path.src %>/js/hogehoge2.js',
+    			'<%= path.root %>/<%= path.src %>/js/hogehoge3.js',
+    			'<%= path.root %>/<%= path.src %>/js/hogehoge4.js'
     		],
-    		dest: '<%= path.root %><%= path.src %>/all/run-all.js
+    		dest: '<%= path.root %>/<%= path.src %>/all/run-all.js
     	}
     },
 
