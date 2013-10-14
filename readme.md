@@ -203,25 +203,22 @@ optimizationLevelを変更することで圧縮レベルを変更できます。
 
 ###**⑪webfontの作成（Macのみ）**
 
-batフォルダの中にあるgrunt_imagemin.batまたはgrunt_imagemin.commandを叩くと画像圧縮が始まります。  
-現状第3階層までのフォルダの中の画像を圧縮しますが、さらに階層を掘り下げたい時は
+batフォルダの中にあるgrunt_webfontを叩くとwebfontの作成が始まります。初期設定では/common/fonts/iconsフォルダにaiファイルを格納してください。
 
-    imagemin: {
-        dist: {
-            options: {
-                    optimizationLevel: 3
-                },
-            files: [{
-                expand: true,
-                src: [
-                    '<%= path.root %>/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/*.{png, jpg, jpeg}','<%= path.root %>/**/**/**/*.{png, jpg, jpeg}'
-                ]
-            }]
-        }
-    },
+    webfont: {
+    			icons: {
+    				src: '<%= path.root %>/<%= path.src %>/fonts/icons/*.svg',
+    				dest: '<%= path.root %>/<%= path.src %>/fonts',
+    				destCss: '<%= path.root %>/<%= path.compile %>',
+    				options: {
+    					font: 'custom-fonts',
+    					stylesheet:'scss',
+    					htmlDemo: false,
+    					relativeFontPath: '/<%= path.src %>/fonts'
+    				}
+    			}
+    		},
 
-上記の記述のsrcの中を追記していただけると追加することができます。  
-optimizationLevelを変更することで圧縮レベルを変更できます。（0～7）
 
 ***
 
