@@ -267,6 +267,8 @@ module.exports = function(grunt) {
 	grunt.registerTask('watch_files', ['open','livereloadx','esteWatch']);
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
+	// grunt webfontコマンドを打つと走るタスクです。webfontを作成します。
+	grunt.registerTask('webfont', ['webfont']);
 
 	// loadNpmTasksを変更（プラグイン読み込み）
 	var taskName;
