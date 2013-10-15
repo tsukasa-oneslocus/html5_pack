@@ -234,7 +234,7 @@ module.exports = function(grunt) {
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['mkdir','copy','clean:prepare']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
-	grunt.registerTask('watch_files', ['livereloadx','esteWatch']);
+	grunt.registerTask('watch_files', ['open','livereloadx','esteWatch']);
 	// grunt imageコマンドを打つと走るタスクです。画像を圧縮します。
 	grunt.registerTask('imagemin', ['imagemin']);
 
