@@ -3,8 +3,8 @@
 **Windows環境用batファイル/Mac環境用commandファイル付**  
   
 update 2013.10.14  
-tsukasa-oneslocus  
-https://github.com/tsukasa-oneslocus  
+tsukasa-web  
+https://github.com/tsukasa-web  
 
 ***
   
