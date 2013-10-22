@@ -3,9 +3,7 @@
 **Windows環境用batファイル/Mac環境用commandファイル付**  
 
 update 2013.10.22  
-=======
-update 2013.10.14
-tsukasa-web  
+**tsukasa-web**  
 https://github.com/tsukasa-web  
 
 ***
