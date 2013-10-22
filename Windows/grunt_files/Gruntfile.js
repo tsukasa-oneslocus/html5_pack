@@ -43,7 +43,7 @@ module.exports = function(grunt) {
 		/* coffeescriptのコンパイル
 		 ------------------------------------------------------------------------*/
 		coffee: {
-			compile: {
+			compileAll: {
 				//top-levelのfunctionを付けたい方はoptionを消してください。
 				options: {
 					bare: true
@@ -51,6 +51,17 @@ module.exports = function(grunt) {
 				expand: true,
 				flatten: true,
 				cwd: '<%= path.root %>/<%= path.compile %>',
+				src: ['*.coffee'],
+				dest: '<%= path.root %>/<%= path.src %>/js',
+				ext: '.js'
+			},
+			compile: {
+				//top-levelのfunctionを付けたい方はoptionを消してください。
+				options: {
+					bare: true
+				},
+				expand: true,
+				flatten: true,
 				src: ['*.coffee'],
 				dest: '<%= path.root %>/<%= path.src %>/js',
 				ext: '.js'
@@ -107,6 +118,8 @@ module.exports = function(grunt) {
 				dest: '<%= path.root %>/<%= path.src %>/all/run-all.min.js'
 			}
 		},
+		//-----------------------------------------------------------------------
+
 		/* cssファイルの圧縮
 		 ------------------------------------------------------------------------*/
 		cssmin: {
@@ -121,7 +134,12 @@ module.exports = function(grunt) {
 		 ------------------------------------------------------------------------*/
 		jshint: {
 			// 対象ファイルを指定
-			all: ["<%= path.root %>/<%= path.src %>/js/run.js"]
+			all: [
+				'<%= path.root %>/<%= path.src %>/js/*.js',
+				'!<%= path.root %>/<%= path.assets %>/js/*.min.js',
+				'!<%= path.root %>/<%= path.assets %>/js/*-all.js',
+				'!<%= path.root %>/<%= path.assets %>/js/lib/*.js'
+			]
 		},
 		//-----------------------------------------------------------------------
 
@@ -152,13 +170,15 @@ module.exports = function(grunt) {
 				}
 			},
 			coffee: function(filepath) {
-				return ['coffee','jshint','concat:run','uglify'];
+				grunt.config(["coffee", "compile", "src"], filepath);
+				return ['coffee:compile:src:' + filepath,'jshint','concat:run','uglify'];
 			},
 			ts: function(filepath) {
-				return ['typescript','jshint','concat:run','uglify'];
+				grunt.config(["typescript", "base", "src"], filepath);
+				return ['typescript:base:src:' + filepath,'jshint','concat:run','uglify'];
 			},
 			scss: function(filepath) {
-				return ['compass','concat:style','cssmin'];
+				return ['compass','concat:style','csscomb','cssmin'];
 			}
 		},
 		//-----------------------------------------------------------------------
@@ -192,6 +212,7 @@ module.exports = function(grunt) {
 						'<%= path.root %>/<%= path.src %>/img',
 						'<%= path.root %>/<%= path.src %>/include',
 						'<%= path.root %>/<%= path.src %>/js',
+						'<%= path.root %>/<%= path.src %>/js/lib',
 						'<%= path.root %>/<%= path.src %>/compile'
 					]
 				}
@@ -206,7 +227,7 @@ module.exports = function(grunt) {
 				files: [
 					{ expand: true, cwd: 'lib', src: ['index.html'], dest: '<%= path.root %>' },
 					{ expand: true, cwd: 'lib', src: ['normalize.css'], dest: '<%= path.root %>/<%= path.src %>/css' },
-					{ expand: true, cwd: 'lib', src: ['modernizr.custom.js'], dest: '<%= path.root %>/<%= path.src %>/js' }
+					{ expand: true, cwd: 'lib', src: ['modernizr.custom.js'], dest: '<%= path.root %>/<%= path.src %>/js/lib' }
 				]
 			}
 		},
@@ -221,8 +242,8 @@ module.exports = function(grunt) {
 				},
 				src: [
 					'assets',
-					'<%= path.root %>/grunt_files/lib',
-					'<%= path.root %>/grunt_files/cmd_bat/grunt_install.command'
+					'lib',
+					'cmd_bat/grunt_install.command'
 				]
 			}
 		}
@@ -230,7 +251,7 @@ module.exports = function(grunt) {
 	});
 
 	// gruntコマンドを打つと走るタスクです。
-	grunt.registerTask('default', ['coffee','typescript','compass','concat','uglify','cssmin','jshint']);
+	grunt.registerTask('default', ['coffee:compileAll','typescript','compass','concat','uglify','cssmin','jshint']);
 	// grunt startコマンドを打つと走るタスクです。初期構築を行います。
 	grunt.registerTask('start', ['mkdir','copy','clean:prepare']);
 	// grunt startコマンドを打つと走るタスクです。ファイルの監視・livereloadを行います。
