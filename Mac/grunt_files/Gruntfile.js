@@ -135,7 +135,7 @@ module.exports = function(grunt) {
 		csscomb: {
 			dist: {
 				files: {
-					'<%= path.root %>/<%= path.src %>/all/style-all.css': ['<%= path.root %><%= path.src %>/all/style-all.css']
+					'<%= path.root %>/<%= path.src %>/all/style-all.css': ['<%= path.root %>/<%= path.src %>/all/style-all.css']
 				}
 			}
 		},
