@@ -2,7 +2,11 @@
 ====================================================================
 **Windows環境用batファイル/Mac環境用commandファイル付**  
   
+<<<<<<< HEAD
 update 2013.10.22  
+=======
+update 2013.10.14  
+>>>>>>> 14a4ea234ffae27f6955d5b755cb015b346ead10
 tsukasa-web  
 https://github.com/tsukasa-web  
 
